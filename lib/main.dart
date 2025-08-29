@@ -10,213 +10,194 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Basic Widgets Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // Status Bar and App Bar area
-      appBar: AppBar(
-        backgroundColor: Colors.amber[300],
-        title: Text('Home'),
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: 16),
-            padding: EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(4),
+      home: Scaffold(
+        // Status Bar and App Bar area
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          title: Text('Home'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 5, 10, 0),
+              child: Image.asset('assets/ke_logo.png', width: 30),
             ),
-            child: Image.asset('assets/ke_logo.png', width: 30),
-          ),
-        ],
-      ),
+          ],
+        ),
 
-      // Main content area - Safe Area
-      body: Container(
-        color: Color(0xFFFF6D4D),
-        child: Column(
-          children: [
-            // Welcome Container with Icon
-            Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Welcome, User!',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        // Main content area - Safe Area
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                // Kotak "Welcome, User!"
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  SizedBox(width: 8),
-                  Icon(Icons.account_circle, color: Colors.black, size: 28),
-                ],
-              ),
-            ),
-
-            SizedBox(height: 20),
-
-            // TabBar and TabBarView
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.grey[800],
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: DefaultTabController(
-                  length: 2,
-                  child: Column(
-                    children: [
-                      // TabBar
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: TabBar(
-                          indicatorSize: TabBarIndicatorSize.tab,
-                          indicator: UnderlineTabIndicator(
-                            borderSide: BorderSide(
-                              color: Colors.amber[300]!,
-                              width: 2,
-                            ),
+                  width: double.infinity,
+                  height: 100,
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Welcome, User!',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
-                          labelColor: Colors.amber[300],
-                          unselectedLabelColor: Colors.white,
-                          labelStyle: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          tabs: [Tab(text: 'To Do'), Tab(text: 'Missed')],
                         ),
-                      ),
+                        SizedBox(width: 10),
+                        Icon(Icons.account_circle),
+                      ],
+                    ),
+                  ),
+                ),
 
-                      // TabBarView
-                      Expanded(
-                        child: TabBarView(
-                          children: [
-                            // To Do Tab
-                            Container(
-                              padding: EdgeInsets.all(16),
-                              child: ListView(
+                SizedBox(height: 20),
+
+                // Kotak "Task List"
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[800],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  width: double.infinity,
+                  height: 500,
+                  child: DefaultTabController(
+                    length: 2,
+                    child: Column(
+                      children: [
+                        TabBar(
+                          labelColor: Colors.yellow,
+                          unselectedLabelColor: Colors.white,
+                          indicatorColor: Colors.yellow,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          tabs: [
+                            Tab(text: 'To Do'),
+                            Tab(text: 'Missed'),
+                          ],
+                        ),
+
+                        Expanded(
+                          child: TabBarView(
+                            children: [
+                              ListView(
                                 children: [
-                                  // ListTile 1
                                   Container(
-                                    margin: EdgeInsets.only(bottom: 12),
-                                    padding: EdgeInsets.all(16),
+                                    margin: EdgeInsets.all(5.0),
                                     decoration: BoxDecoration(
-                                      color: Colors.amber[300],
-                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    child: Text(
-                                      'Complete Flutter tutorial',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Kedai Makan ABC',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      subtitle: Text('20/5/2025'),
+                                      trailing: Text(
+                                        'RM 20.00',
+                                        style: TextStyle(fontSize: 20),
                                       ),
                                     ),
                                   ),
-
-                                  // ListTile 2
                                   Container(
-                                    margin: EdgeInsets.only(bottom: 12),
-                                    padding: EdgeInsets.all(16),
+                                    margin: EdgeInsets.all(5.0),
                                     decoration: BoxDecoration(
-                                      color: Colors.amber[300],
-                                      borderRadius: BorderRadius.circular(8),
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    child: Text(
-                                      'Review basic widgets',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Kedai Makan ABC',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
                                       ),
-                                    ),
-                                  ),
-
-                                  // ListTile 3
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 12),
-                                    padding: EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                      color: Colors.amber[300],
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      'Practice layout concepts',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                  ),
-
-                                  // ListTile 4
-                                  Container(
-                                    margin: EdgeInsets.only(bottom: 12),
-                                    padding: EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                      color: Colors.amber[300],
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      'Build first app',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.black87,
-                                        fontWeight: FontWeight.w500,
+                                      subtitle: Text('20/5/2025'),
+                                      trailing: Text(
+                                        'RM 20.00',
+                                        style: TextStyle(fontSize: 20),
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-
-                            // Missed Tab
-                            Container(
-                              padding: EdgeInsets.all(16),
-                              child: Center(
-                                child: Text(
-                                  'No missed tasks',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
+                              ListView(
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.all(5.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ListTile(
+                                      title: Text(
+                                        'Kedai Makan ABC',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      subtitle: Text('20/5/2025'),
+                                      trailing: Text(
+                                        'RM 20.00',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Container(
+                                    margin: EdgeInsets.all(5.0),
+                                    decoration: BoxDecoration(
+                                      color: Colors.yellow,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ListTile(
+                                      title: Text(
+                                        'Kedai Makan ABC',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      subtitle: Text('20/5/2025'),
+                                      trailing: Text(
+                                        'RM 20.00',
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
+          ),
+        ),
 
-            SizedBox(height: 16),
+        // Navigation Bar
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.note), label: 'Form'),
           ],
         ),
-      ),
-
-      // Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[800],
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey[400],
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.note_alt), label: 'Form'),
-        ],
       ),
     );
   }
