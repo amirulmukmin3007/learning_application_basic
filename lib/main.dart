@@ -6,6 +6,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // Constructor for initializing the widget
   const MyApp({super.key});
 
   @override
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
 
                 SizedBox(height: 20),
 
-                // Kotak "Task List"
+                // Task Categories
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
